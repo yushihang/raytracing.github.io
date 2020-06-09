@@ -31,7 +31,27 @@ set ( SOURCE_ONE_WEEKEND
   src/InOneWeekend/main.cc
 )
 
+set ( SOURCE_NEXT_WEEK
+  ${COMMON_ALL}
+  src/common/aabb.h
+  src/common/external/stb_image.h
+  src/common/perlin.h
+  src/common/rtw_stb_image.h
+  src/common/texture.h
+  src/TheNextWeek/aarect.h
+  src/TheNextWeek/box.h
+  src/TheNextWeek/bvh.h
+  src/TheNextWeek/constant_medium.h
+  src/TheNextWeek/hittable.h
+  src/TheNextWeek/hittable_list.h
+  src/TheNextWeek/material.h
+  src/TheNextWeek/moving_sphere.h
+  src/TheNextWeek/sphere.h
+  src/TheNextWeek/main.cc
+)
+
 # Executables
 add_executable(inOneWeekend      ${SOURCE_ONE_WEEKEND})
+add_executable(theNextWeek       ${SOURCE_NEXT_WEEK})
 
 include_directories(src/common)
