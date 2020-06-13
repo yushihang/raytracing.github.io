@@ -3,6 +3,8 @@
 
 #include "rtweekend.h"
 
+#include "texture.h"
+
 
 struct hit_record;
 
@@ -24,19 +26,20 @@ class material {
 
 class lambertian : public material {
     public:
-        lambertian(const color& a) : albedo(a) {}
+        lambertian(const color& a) : albedo(make_shared<solid_color>(a)) {}
+        lambertian(shared_ptr<texture> a) : albedo(a) {}
 
         virtual bool scatter(
             const ray& r_in, const hit_record& rec, color& attenuation, ray& scattered
         ) const {
             vec3 scatter_direction = rec.normal + random_unit_vector();
             scattered = ray(rec.p, scatter_direction, r_in.time());
-            attenuation = albedo;
+            attenuation = albedo->value(rec.u, rec.v, rec.p);
             return true;
         }
 
     public:
-        color albedo;
+        shared_ptr<texture> albedo;
 };
 
 
@@ -94,6 +97,30 @@ class dielectric : public material {
 
     public:
         double ref_idx;
+};
+
+
+class checker_texture : public texture {
+    public:
+        checker_texture() {}
+
+        checker_texture(shared_ptr<texture> t0, shared_ptr<texture> t1)
+            : even(t0), odd(t1) {}
+
+        checker_texture(color c1, color c2)
+            : even(make_shared<solid_color>(c1)) , odd(make_shared<solid_color>(c2)) {}
+
+        virtual color value(double u, double v, const point3& p) const {
+            auto sines = sin(10*p.x())*sin(10*p.y())*sin(10*p.z());
+            if (sines < 0)
+                return odd->value(u, v, p);
+            else
+                return even->value(u, v, p);
+        }
+
+    public:
+        shared_ptr<texture> odd;
+        shared_ptr<texture> even;
 };
 
 
