@@ -3,6 +3,8 @@
 
 #include "rtweekend.h"
 
+#include "perlin.h"
+
 
 class texture {
     public:
@@ -24,6 +26,19 @@ class solid_color : public texture {
 
     private:
         color color_value;
+};
+
+
+class noise_texture : public texture {
+    public:
+        noise_texture() {}
+
+        virtual color value(double u, double v, const point3& p) const {
+            return color(1,1,1) * noise.noise(p);
+        }
+
+    public:
+        perlin noise;
 };
 
 
