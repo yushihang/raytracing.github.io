@@ -33,6 +33,7 @@
 		0422723025486294002BA67B /* vec3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vec3.h; sourceTree = "<group>"; };
 		04227231254862A6002BA67B /* rtweekend.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rtweekend.h; sourceTree = "<group>"; };
 		04227235254864FB002BA67B /* test.ppm */ = {isa = PBXFileReference; lastKnownFileType = text; path = test.ppm; sourceTree = "<group>"; };
+		0422723725486F2A002BA67B /* camera.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = camera.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +83,7 @@
 				0422722F25486294002BA67B /* ray.h */,
 				0422723025486294002BA67B /* vec3.h */,
 				04227231254862A6002BA67B /* rtweekend.h */,
+				0422723725486F2A002BA67B /* camera.h */,
 			);
 			path = common;
 			sourceTree = "<group>";
