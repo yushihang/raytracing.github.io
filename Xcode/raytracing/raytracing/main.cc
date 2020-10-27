@@ -3,14 +3,14 @@
 #include "vec3.h"
 
 #include <iostream>
-
+#include <fstream>
 color ray_color(const ray& r) {
     vec3 unit_direction = unit_vector(r.direction());
     auto t = 0.5*(unit_direction.y() + 1.0);
     return (1.0-t)*color(1.0, 1.0, 1.0) + t*color(0.5, 0.7, 1.0);
 }
 
-int main() {
+int main(int argv, char**argc) {
 
     // Image
     const auto aspect_ratio = 16.0 / 9.0;
@@ -28,9 +28,11 @@ int main() {
     auto vertical = vec3(0, viewport_height, 0);
     auto lower_left_corner = origin - horizontal/2 - vertical/2 - vec3(0, 0, focal_length);
 
+    
+    std::fstream file("/Users/mac/Documents/GitHub/raytracing.github.io/Xcode/raytracing/raytracing/test.ppm");
     // Render
 
-    std::cout << "P3\n" << image_width << " " << image_height << "\n255\n";
+    file << "P3\n" << image_width << " " << image_height << "\n255\n";
 
     for (int j = image_height-1; j >= 0; --j) {
         std::cerr << "\rScanlines remaining: " << j << ' ' << std::flush;
@@ -39,9 +41,11 @@ int main() {
             auto v = double(j) / (image_height-1);
             ray r(origin, lower_left_corner + u*horizontal + v*vertical - origin);
             color pixel_color = ray_color(r);
-            write_color(std::cout, pixel_color);
+            write_color(file, pixel_color);
         }
     }
+    
+    file.close();
 
     std::cerr << "\nDone.\n";
 }
