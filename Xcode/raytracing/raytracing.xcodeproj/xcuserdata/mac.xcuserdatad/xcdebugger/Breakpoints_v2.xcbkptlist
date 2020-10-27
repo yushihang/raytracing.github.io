@@ -7,16 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "7C99B51F-6B8E-4729-B93F-E99F7C0C3427"
-            shouldBeEnabled = "Yes"
+            uuid = "A3F0FB2B-31C4-445C-8C5D-9266A26883E4"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "raytracing/main.cc"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
-            landmarkName = "main(argv, argc)"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "ray_color(r)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0EC919A7-FB13-4A1D-824A-0F6427FA2CB3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "raytracing/main.cc"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "ray_color(r)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
